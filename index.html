@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="dribbble" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="dribbble" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="dribbble" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="dribbble" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="App para consumir api Dribbble com Angular">
+    <meta name="author" content="Ricardo Gelschleiter">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Desafio Dribbble</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body ng-controller="ShotsController">
+
+<div class="overlay" style="display: {{api.isLoading ? 'block' : 'none'}};">
+    <img class="loadImg" src="assets/img/load.gif"/>
+</div>
+
+<div id="content" class="group">
+    <div id="main" class="gallery">
+        <ol class="dribbbles group deckgrid thumbnails" deckgrid source="api.shots">
+            <li class="group span3">
+                <div class="dribbble" ng-show="card.id > 0">
+                    <div class="dribbble-shot">
+                        <div class="dribbble-img">
+                            <a class="dribbble-link"
+                               ng-click="mother.displayShot(card.id)">
+                                <div data-alt="{{card.title}}">
+                                    <img alt="{{card.title}}"
+                                         ng-src="{{card.getAnimatedImageUrl()}}">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- viasualizacoes -->
+                    <ul class="tools group" style="visibility: visible;">
+                        <li class="views">
+                            <span>{{card.views_count}}</span>
+                        </li>
+                        <li class="cmnt">
+                            <span>{{card.comments_count}}</span>
+                        </li>
+                        <li class="fav">
+                            <span>{{card.likes_count}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- usuario -->
+                <h2>
+                    <span class="attribution-user">
+                        <a class="url" rel="contact" title="{{card.user.name}}" href="{{card.user.html_url}}">
+                            <img class="photo"
+                                 ng-src="{{card.getUserAvatar('mini')}}">
+                            {{card.user.name}}
+                        </a>
+                    </span>
+                </h2>
+            </li>
+        </ol>
+        <div ng-show="!api.isLoading" style="text-align: center;"><a href="#" class="btn btn-default"
+                                                                     ng-click="loadMore()">mais...</a></div>
+    </div>
+</div>
+
+<div class="overlay" ng-show="showDetail">
+
+    <a href="#" ng-click="showDetail = false" class="close-overlay">
+        <img src="assets/img/close.png" alt="Fechar">
+    </a>
+
+    <div class="overlay-content group">
+        <div id="screenshot-title-section" class="full title">
+            <div class="single-title group">
+                <a class="url" rel="contact" title="{{selectedShot.user.name}}" href="{{selectedShot.user.html_url}}">
+                    <div data-picture="" data-class="photo">
+                        <img class="photo"
+                             ng-src="{{selectedShot.getUserAvatar('small')}}">
+                    </div>
+                </a>
+
+                <h1 id="screenshot-title">{{selectedShot.title}}</h1>
+
+                <div class="shot-byline">
+                    <div class="attribution ">
+                        <span class="shot-byline-user">
+                            by <a class="url" rel="contact" href="{{selectedShot.user.html_url}}">{{selectedShot.user.name}}</a>
+                        </span>
+                    </div>
+
+                    <span class="screenshot-dash">Oct 5, 2015</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-shot">
+            <div class="the-shot" data-screenshot_id="{{selectedShot.id}}"
+                 data-img-src="{{selectedShot.getImageUrl()}}">
+                <div class="single">
+                    <div class="single-grid">
+                        <div class="single-img">
+                            <div data-picture="" data-alt="{{selectedShot.title}}">
+                                <img alt="{{selectedShot.title}}"
+                                     ng-src="{{selectedShot.getImageUrl()}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shot-desc" ng-bind-html="selectedShot.description | sanitize"></div>
+        </div>
+    </div>
+</div>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
+<script src="dribbble.js"></script>
+
+</body>
+</html>

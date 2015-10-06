@@ -1,0 +1,398 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+
+@media screen, projection {
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #444444;
+        font-size: 62.5%;
+        text-rendering: optimizeLegibility;
+        background: #fff;
+    }
+}
+
+body {
+    background: url(assets/img/binding_light.png);
+}
+
+.overlay {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /*dim the background*/
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    position: fixed;
+    overflow-y: scroll;
+}
+
+.overlay .loadImg {
+    margin-top: 35%;
+}
+
+.group {
+    position: relative;
+}
+
+ol {
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+ol li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+ol.dribbbles li.group {
+    margin: 25px auto;
+    position: relative;
+    width: 220px;
+    padding: 0;
+}
+
+li div.dribbble {
+    position: relative;
+    clear: left;
+    background: #fff;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+div.dribbble-shot {
+    padding: 10px;
+    display: block;
+}
+
+li ul.tools {
+    padding: 0 12px 8px 0;
+    text-align: right;
+}
+
+ul.tools li {
+    width: auto;
+    margin: 0 0 0 12px;
+    display: inline;
+    font-size: 11px;
+    line-height: 1;
+    color: #aaa;
+}
+
+ul.tools li.views span {
+    margin-left: 0;
+    border-left: none;
+    padding-left: 18px;
+    background: url("assets/img/icon-views.png") no-repeat 0 0;
+}
+
+ul.tools li.cmnt span {
+    padding-left: 15px;
+    background: url("assets/img/icon-comments.png") no-repeat 0 0;
+}
+
+ul.tools li.fav span {
+    padding-left: 15px;
+    background: url("assets/img/icon-hearts.png") no-repeat 0 0;
+}
+
+ol.dribbbles li h2, ol.collections li h2 {
+    max-height: 16px;
+    margin: 10px 0 0 0;
+    padding: 0 0 0 10px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #999999;
+    vertical-align: middle;
+}
+
+ol.dribbbles li h2 a, ol.collections li h2 a {
+    font-weight: 500;
+}
+
+a:link, a:visited {
+    color: #1e6189 !important;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #3a8bbb !important;
+}
+
+a img {
+    cursor: pointer;
+    border: none;
+    width: 200px;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: auto;
+}
+
+ol.gallery {
+    display: inline;
+}
+
+ol.dribbbles li h2 a img, ol.collections li h2 a img {
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin: 1px 5px 0 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.overlay-content {
+    position: absolute;
+    z-index: 9998;
+    top: 20px;
+    width: 90%;
+    /*left: 50%;
+    margin-left: -460px;*/
+    margin: 0 5% 20px 5%;
+    padding: 40px 45px;
+    background: #f4f4f4;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+a.close-overlay {
+    position: absolute;
+    top: 5px;
+    right: 3.5%;
+    padding: 20px;
+    opacity: .5;
+    z-index: 9999;
+}
+
+a.close-overlay img {
+    width: 36px;
+    height: 36px;
+}
+
+div.main-shot {
+    position: relative;
+    float: left;
+}
+
+div.the-shot {
+    float: left;
+    margin: 0 0 10px 0;
+    width: 440px;
+}
+
+div.the-shot div.single {
+    /*width: 400px;*/
+    min-height: 300px;
+    padding: 20px;
+    background: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+div.the-shot div.single-grid {
+    width: 400px;
+    height: 300px;
+    /*background: url(/assets/dribbble-checkerbg-lg-9572a560482b07e5eae86f6e35d6aabc.gif) no-repeat top left;*/
+    overflow: hidden;
+}
+
+div.the-shot div.single-grid div.single-img img {
+    display: block;
+    max-width: 400px;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+#screenshot-title-section {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+div.single-title a img {
+    float: left;
+    width: 48px;
+    margin: -2px 8px 0 0;
+    vertical-align: middle;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+div.full {
+    width: 700px;
+    margin: 10px 0 35px 0;
+    padding: 0;
+}
+
+div.single-title {
+    font-size: .9em;
+}
+
+#screenshot-title-section div.single-title h1 {
+    font-size: 20px;
+}
+
+div.single-title h1 {
+    margin: 0 0 2px 58px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+div.single-title h2, div.single-title div.shot-byline {
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: #999999;
+}
+
+span.screenshot-dash, div.screenshot-dash {
+    float: left;
+    margin: 2px 0;
+    font-size: 13px;
+    color: #999999;
+}
+
+div.shot-desc {
+    text-align: left;
+    clear: left;
+    float: left;
+    margin: 15px 0 0 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+    overflow: hidden;
+}
+
+.deckgrid[deckgrid]::before {
+    /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
+    content: '4 .column.column-1-4';
+    font-size: 0; /* See https://github.com/akoenig/angular-deckgrid/issues/14#issuecomment-35728861 */
+    visibility: hidden;
+}
+
+.deckgrid .column {
+    float: left;
+}
+
+.deckgrid .column-1-4 {
+    width: 25%;
+}
+
+@media screen and (max-width: 992px) {
+    .deckgrid[deckgrid]::before {
+        content: '3 .column.column-1-3';
+    }
+
+    .deckgrid .column-1-3 {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 766px) {
+    .deckgrid[deckgrid]::before {
+        content: '2 .column.column-1-2';
+    }
+
+    .deckgrid .column-1-2 {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 572px) {
+    .deckgrid[deckgrid]::before {
+        content: '1 .column.column-1-1';
+    }
+
+    .deckgrid .column-1-1 {
+        width: 100%;
+    }
+
+    .tools {
+        display: none;
+    }
+
+    .attribution-user {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .overlay-content {
+        padding: 30px 15px;
+    }
+
+    div.shot-desc {
+        font-size: 12px;
+    }
+
+    a.close-overlay {
+        right: 1%;
+    }
+
+    div.the-shot {
+        float: none;
+        width: auto;
+        background: none;
+    }
+
+    div.the-shot div.single {
+        width: auto;
+        height: auto;
+        min-height: 0;
+        padding: 5px;
+    }
+
+    div.the-shot div.single-grid {
+        display: block;
+        width: auto;
+        height: auto;
+        background-repeat: repeat;
+    }
+
+    div.the-shot div.single-grid div.single-img img {
+        display: block;
+        max-width: 100%;
+    }
+}
+
+.btn {
+    text-transform: uppercase;
+    border: none;
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
